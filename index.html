@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>วิทยาลัยเทคนิคยะลา - Yala Technical College</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* ตั้งค่าพื้นฐาน */
+        :root {
+            --primary-color: #800000; /* สีเลือดหมู/แดงเข้ม ตามสีประจำสถาบัน */
+            --secondary-color: #f4f4f4;
+            --text-color: #333;
+            --accent-color: #ffc107;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* ส่วนหัว (Header) */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* ส่วนแบนเนอร์ (Hero Section) */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/1920x600?text=Yala+Technical+College+Image');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 10px 25px;
+            background-color: var(--primary-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #5a0000;
+        }
+
+        /* ส่วนบอร์ดข่าวสาร (News Board) */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 10px auto;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .news-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-header {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 10px 15px;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .news-content {
+            padding: 20px;
+        }
+
+        .news-content h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .news-content p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* ส่วนหลักสูตร (Courses) */
+        .courses-section {
+            background-color: #fff;
+            padding: 50px 0;
+            margin-top: 40px;
+        }
+
+        .course-flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .course-item {
+            text-align: center;
+            padding: 30px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            width: 250px;
+            transition: box-shadow 0.3s;
+        }
+
+        .course-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .course-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* ส่วนท้าย (Footer) */
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        .socials a {
+            color: #fff;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .socials a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <i class="fas fa-university"></i>
+                วิทยาลัยเทคนิคยะลา
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">หน้าแรก</a></li>
+                <li><a href="#">เกี่ยวกับเรา</a></li>
+                <li><a href="#">หลักสูตร</a></li>
+                <li><a href="#">ข่าวประชาสัมพันธ์</a></li>
+                <li><a href="#">ติดต่อเรา</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>ยินดีต้อนรับสู่ วิทยาลัยเทคนิคยะลา</h1>
+        <p>สร้างคนดี มีฝีมือ สู่สังคมมาตรฐานสากล</p>
+        <a href="#" class="btn">สมัครเรียนออนไลน์</a>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title">บอร์ดประชาสัมพันธ์</h2>
+        <div class="news-grid">
+            <div class="news-card">
+                <div class="news-header">
+                    <span><i class="fas fa-bullhorn"></i> ประกาศทั่วไป</span>
+                    <span>8 ม.ค. 69</span>
+                </div>
+                <div class="news-content">
+                    <h3>เปิดรับสมัครนักศึกษาใหม่ ปีการศึกษา 2569</h3>
+                    <p>วิทยาลัยเทคนิคยะลา เปิดรับสมัครนักเรียน นักศึกษาใหม่ ระดับ ปวช. และ ปวส. แล้ววันนี้...</p>
+                    <a href="#" class="read-more">อ่านต่อ <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-header">
+                    <span><i class="fas fa-calendar-alt"></i> กิจกรรม</span>
+                    <span>5 ม.ค. 69</span>
+                </div>
+                <div class="news-content">
+                    <h3>โครงการอบรมวิชาชีพเพื่อชุมชน</h3>
+                    <p>ขอเชิญชวนผู้สนใจเข้าร่วมโครงการฝึกอบรมวิชาชีพช่างซ่อมบำรุงเครื่องใช้ไฟฟ้า...</p>
+                    <a href="#" class="read-more">อ่านต่อ <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-header">
+                    <span><i class="fas fa-star"></i> ผลงาน</span>
+                    <span>28 ธ.ค. 68</span>
+                </div>
+                <div class="news-content">
+                    <h3>นศ.เทคนิคยะลา คว้าเหรียญทองระดับภาค</h3>
+                    <p>ขอแสดงความยินดีกับตัวแทนนักศึกษาแผนกวิชาช่างยนต์ ในการแข่งขันทักษะวิชาชีพ...</p>
+                    <a href="#" class="read-more">อ่านต่อ <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="courses-section">
+        <div class="container">
+            <h2 class="section-title">หลักสูตรที่เปิดสอน</h2>
+            <div class="course-flex">
+                <div class="course-item">
+                    <i class="fas fa-cogs course-icon"></i>
+                    <h3>ช่างอุตสาหกรรม</h3>
+                    <p>ช่างยนต์, ช่างกลโรงงาน, ช่างเชื่อม, ช่างไฟฟ้ากำลัง</p>
+                </div>
+                <div class="course-item">
+                    <i class="fas fa-laptop-code course-icon"></i>
+                    <h3>เทคโนโลยีสารสนเทศ</h3>
+                    <p>เทคโนโลยีคอมพิวเตอร์, ซอฟต์แวร์, เครือข่าย</p>
+                </div>
+                <div class="course-item">
+                    <i class="fas fa-chart-line course-icon"></i>
+                    <h3>บริหารธุรกิจ</h3>
+                    <p>การบัญชี, การตลาด, คอมพิวเตอร์ธุรกิจ</p>
+                </div>
+                <div class="course-item">
+                    <i class="fas fa-hotel course-icon"></i>
+                    <h3>อุตสาหกรรมการท่องเที่ยว</h3>
+                    <p>การโรงแรม, การท่องเที่ยว</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>วิทยาลัยเทคนิคยะลา</h3>
+                <p>มุ่งมั่นผลิตและพัฒนากำลังคนอาชีวศึกษาให้มีคุณภาพ ได้มาตรฐานสากล</p>
+            </div>
+            <div class="footer-section">
+                <h3>ติดต่อเรา</h3>
+                <p><i class="fas fa-map-marker-alt"></i> ถ.พิพิธภักดี ต.สะเตง อ.เมือง จ.ยะลา</p>
+                <p><i class="fas fa-phone"></i> 073-XXX-XXX</p>
+                <p><i class="fas fa-envelope"></i> info@ytc.ac.th</p>
+            </div>
+            <div class="footer-section">
+                <h3>ติดตามเรา</h3>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-line"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Yala Technical College. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
